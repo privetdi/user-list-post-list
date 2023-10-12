@@ -1,35 +1,36 @@
-import React, { useState } from "react";
-import "./changePost.css";
-import { IPost } from "../../api/interface";
-import { Navigate, Route, useParams } from "react-router";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
-import { useDispatch } from "react-redux";
-import { addPost } from "../../store/reducers/conunterSlice";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react'
+import './changePost.css'
+import { IPost } from '../../api/interface'
+import { Navigate, Route, useParams } from 'react-router'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../store/store'
+import { useDispatch } from 'react-redux'
+import { addPost } from '../../store/reducers/conunterSlice'
+import { useNavigate } from 'react-router-dom'
+import { githubPages } from '../../App'
 
 function NewPost() {
-  const posts = useSelector((state: RootState) => state.store.posts);
-  const dispatch = useDispatch();
+  const posts = useSelector((state: RootState) => state.store.posts)
+  const dispatch = useDispatch()
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
+  const [title, setTitle] = useState('')
+  const [body, setBody] = useState('')
 
   const handleCreate = () => {
-    let id: number = 0;
+    let id: number = 0
     if (posts) {
-      id = Math.max(...posts?.map((item) => item.id));
+      id = Math.max(...posts?.map((item) => item.id))
     }
     const updatedPost: IPost = {
       id: ++id,
       title: title,
       body: body,
-    };
-    dispatch(addPost(updatedPost));
-    navigate("/posts");
-  };
+    }
+    dispatch(addPost(updatedPost))
+    navigate(`${githubPages}/posts`)
+  }
 
   return (
     <>
@@ -60,7 +61,10 @@ function NewPost() {
               />
             </div>
           }
-          <button className="Btn" onClick={() => navigate("/posts")}>
+          <button
+            className="Btn"
+            onClick={() => navigate(`${githubPages}/posts`)}
+          >
             Отмена
           </button>
           <button className="Btn active" onClick={handleCreate}>
@@ -69,7 +73,7 @@ function NewPost() {
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default NewPost;
+export default NewPost

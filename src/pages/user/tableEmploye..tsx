@@ -1,20 +1,21 @@
-import React, { useEffect } from "react";
-import { IUser } from "../../api/interface";
-import { api } from "../../api/api";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
-import { useDispatch } from "react-redux";
-import { setListUsers } from "../../store/reducers/conunterSlice";
-import EmployeItem from "./employeItem";
-import "./tableEmploye.css";
-import Search from "../../assets/search";
-import { useNavigate } from "react-router";
+import React, { useEffect } from 'react'
+import { IUser } from '../../api/interface'
+import { api } from '../../api/api'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../store/store'
+import { useDispatch } from 'react-redux'
+import { setListUsers } from '../../store/reducers/conunterSlice'
+import EmployeItem from './employeItem'
+import './tableEmploye.css'
+import Search from '../../assets/search'
+import { useNavigate } from 'react-router'
+import { githubPages } from '../../App'
 
 function TableEmploye() {
-  const users = useSelector((state: RootState) => state.store.users);
-  const navigate = useNavigate();
+  const users = useSelector((state: RootState) => state.store.users)
+  const navigate = useNavigate()
   function newUser() {
-    navigate(`/users/сreation`);
+    navigate(`${githubPages}/users/сreation`)
   }
 
   return (
@@ -50,12 +51,12 @@ function TableEmploye() {
       <div className="employeList">
         {users !== null
           ? users?.map((item) => {
-              return <EmployeItem user={item} />;
+              return <EmployeItem user={item} />
             })
-          : "Loading..."}
+          : 'Loading...'}
       </div>
     </>
-  );
+  )
 }
 
-export default TableEmploye;
+export default TableEmploye

@@ -1,27 +1,28 @@
-import React, { useState } from "react";
-import "./changePost.css";
-import { IPost } from "../../api/interface";
-import { Navigate, Route, useParams } from "react-router";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
-import { useDispatch } from "react-redux";
-import { deletePost, updatePost } from "../../store/reducers/conunterSlice";
-import { useNavigate } from "react-router-dom";
-import Switch from "../../assets/switch";
-import Modal from "../../components/modalWindow";
+import React, { useState } from 'react'
+import './changePost.css'
+import { IPost } from '../../api/interface'
+import { Navigate, Route, useParams } from 'react-router'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../store/store'
+import { useDispatch } from 'react-redux'
+import { deletePost, updatePost } from '../../store/reducers/conunterSlice'
+import { useNavigate } from 'react-router-dom'
+import Switch from '../../assets/switch'
+import Modal from '../../components/modalWindow'
+import { githubPages } from '../../App'
 
 function ChangePost() {
-  const posts = useSelector((state: RootState) => state.store.posts);
-  const dispatch = useDispatch();
+  const posts = useSelector((state: RootState) => state.store.posts)
+  const dispatch = useDispatch()
 
-  const { post } = useParams<{ post: string }>();
-  const navigate = useNavigate();
+  const { post } = useParams<{ post: string }>()
+  const navigate = useNavigate()
 
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false)
 
-  const selectedPost = post ? posts?.find((item) => item.id === +post) : null;
-  const [title, setTitle] = useState(selectedPost?.title || "");
-  const [body, setBody] = useState(selectedPost?.body || "");
+  const selectedPost = post ? posts?.find((item) => item.id === +post) : null
+  const [title, setTitle] = useState(selectedPost?.title || '')
+  const [body, setBody] = useState(selectedPost?.body || '')
 
   const handleSave = () => {
     if (selectedPost) {
@@ -29,24 +30,27 @@ function ChangePost() {
         ...selectedPost,
         title: title,
         body: body,
-      };
-      dispatch(updatePost(updatedPost));
+      }
+      dispatch(updatePost(updatedPost))
     }
-  };
+  }
   const deletePostCb = (id: string) => {
-    setModalOpen(false);
-    dispatch(deletePost(id));
-    navigate("/posts");
-  };
+    setModalOpen(false)
+    dispatch(deletePost(id))
+    navigate(`${githubPages}/posts`)
+  }
 
   const handleClick = () => {
-    setModalOpen(true);
-  };
+    setModalOpen(true)
+  }
 
   return (
     <>
       <div className="nav">
-        <span className="nav-item" onClick={() => navigate("/posts")}>
+        <span
+          className="nav-item"
+          onClick={() => navigate(`${githubPages}/posts`)}
+        >
           посты /
         </span>
         <span>Изменение поста</span>
@@ -80,7 +84,10 @@ function ChangePost() {
           ) : (
             <p>No post selected</p>
           )}
-          <button className="Btn" onClick={() => navigate("/posts")}>
+          <button
+            className="Btn"
+            onClick={() => navigate(`${githubPages}/posts`)}
+          >
             Отмена
           </button>
           <button className="Btn active" onClick={handleSave}>
@@ -101,16 +108,16 @@ function ChangePost() {
           </button>
         </div>
         <Modal
-          messageText={"Вы хотите удалить пост?"}
+          messageText={'Вы хотите удалить пост?'}
           open={modalOpen}
           onClose={() => setModalOpen(false)}
           onDelete={() => {
-            if (post) deletePostCb(post);
+            if (post) deletePostCb(post)
           }}
         />
       </div>
     </>
-  );
+  )
 }
 
-export default ChangePost;
+export default ChangePost

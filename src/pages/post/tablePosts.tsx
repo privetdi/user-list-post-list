@@ -1,19 +1,20 @@
-import React, { useEffect } from "react";
-import { IPost } from "../../api/interface";
-import { api } from "../../api/api";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
-import { useDispatch } from "react-redux";
-import { setListPosts } from "../../store/reducers/conunterSlice";
-import PostItem from "./postItem";
-import "./tablePosts.css";
-import { Navigate, useNavigate } from "react-router";
+import React, { useEffect } from 'react'
+import { IPost } from '../../api/interface'
+import { api } from '../../api/api'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../store/store'
+import { useDispatch } from 'react-redux'
+import { setListPosts } from '../../store/reducers/conunterSlice'
+import PostItem from './postItem'
+import './tablePosts.css'
+import { Navigate, useNavigate } from 'react-router'
+import { githubPages } from '../../App'
 
 function TablePosts() {
-  const posts = useSelector((state: RootState) => state.store.posts);
-  const navigate = useNavigate();
+  const posts = useSelector((state: RootState) => state.store.posts)
+  const navigate = useNavigate()
   function newPost() {
-    navigate(`/posts/сreation`);
+    navigate(`${githubPages}/posts/сreation`)
   }
   return (
     <div>
@@ -33,11 +34,11 @@ function TablePosts() {
       </div>
       {posts !== null
         ? posts?.map((item) => {
-            return <PostItem post={item} />;
+            return <PostItem post={item} />
           })
-        : "Loading..."}
+        : 'Loading...'}
     </div>
-  );
+  )
 }
 
-export default TablePosts;
+export default TablePosts

@@ -1,14 +1,15 @@
-import React from "react";
-import { IPost, IUser } from "../../api/interface";
-import Pencil from "../../assets/pencil";
-import Show from "../../assets/show";
-import { Navigate, Route, useNavigate } from "react-router";
-import "./postItem.css";
+import React from 'react'
+import { IPost, IUser } from '../../api/interface'
+import Pencil from '../../assets/pencil'
+import Show from '../../assets/show'
+import { Navigate, Route, useNavigate } from 'react-router'
+import './postItem.css'
+import { githubPages } from '../../App'
 
 function PostItem({ post }: { post: IPost }) {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   function changePost(id: number) {
-    navigate(`/posts/change/${id}`);
+    navigate(`${githubPages}/posts/change/${id}`)
   }
   return (
     <div className="post__item" key={post.id}>
@@ -20,13 +21,13 @@ function PostItem({ post }: { post: IPost }) {
         </button>
         <button
           className="svgBtn"
-          onClick={() => navigate(`/post/view/${post.id}`)}
+          onClick={() => navigate(`${githubPages}/post/view/${post.id}`)}
         >
           <Show />
         </button>
       </div>
     </div>
-  );
+  )
 }
 
-export default PostItem;
+export default PostItem

@@ -1,34 +1,35 @@
-import React, { useState } from "react";
-import "./changeUser.css";
-import { IUser } from "../../api/interface";
-import { Navigate, Route, useParams } from "react-router";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
-import { useDispatch } from "react-redux";
+import React, { useState } from 'react'
+import './changeUser.css'
+import { IUser } from '../../api/interface'
+import { Navigate, Route, useParams } from 'react-router'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../store/store'
+import { useDispatch } from 'react-redux'
 import {
   addUser,
   deleteUser,
   updateUser,
-} from "../../store/reducers/conunterSlice";
-import { useNavigate } from "react-router-dom";
-import Switch from "../../assets/switch";
+} from '../../store/reducers/conunterSlice'
+import { useNavigate } from 'react-router-dom'
+import Switch from '../../assets/switch'
+import { githubPages } from '../../App'
 
 function NewEmploye() {
-  const users = useSelector((state: RootState) => state.store.users);
-  const dispatch = useDispatch();
+  const users = useSelector((state: RootState) => state.store.users)
+  const dispatch = useDispatch()
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [company, setCompany] = useState("");
-  const [phone, setPhone] = useState("");
-  const [password, setPassword] = useState("");
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [company, setCompany] = useState('')
+  const [phone, setPhone] = useState('')
+  const [password, setPassword] = useState('')
 
   const handleCreate = () => {
-    let id: number = 0;
+    let id: number = 0
     if (users) {
-      id = Math.max(...users?.map((item) => item.id));
+      id = Math.max(...users?.map((item) => item.id))
     }
     const updatedUser: IUser = {
       id: ++id,
@@ -38,10 +39,10 @@ function NewEmploye() {
       company: {
         name: company,
       },
-    };
-    dispatch(addUser(updatedUser));
-    navigate("/users");
-  };
+    }
+    dispatch(addUser(updatedUser))
+    navigate(`${githubPages}/users`)
+  }
 
   return (
     <>
@@ -103,7 +104,10 @@ function NewEmploye() {
               />
             </div>
           }
-          <button className="Btn" onClick={() => navigate("/users")}>
+          <button
+            className="Btn"
+            onClick={() => navigate(`${githubPages}/users`)}
+          >
             Отмена
           </button>
           <button className="Btn active" onClick={handleCreate}>
@@ -112,7 +116,7 @@ function NewEmploye() {
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default NewEmploye;
+export default NewEmploye

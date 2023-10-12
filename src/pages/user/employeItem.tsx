@@ -1,16 +1,17 @@
-import React from "react";
-import "./employeItem.css";
-import { IUser } from "../../api/interface";
-import Pencil from "../../assets/pencil";
-import Show from "../../assets/show";
-import { Navigate, Route, useNavigate } from "react-router";
-import TableEmploye from "./tableEmploye.";
-import ChangeUser from "./changeUses";
+import React from 'react'
+import './employeItem.css'
+import { IUser } from '../../api/interface'
+import Pencil from '../../assets/pencil'
+import Show from '../../assets/show'
+import { Navigate, Route, useNavigate } from 'react-router'
+import TableEmploye from './tableEmploye.'
+import ChangeUser from './changeUses'
+import { githubPages } from '../../App'
 
 function EmployeItem({ user }: { user: IUser }) {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   function changeUser(id: number) {
-    navigate(`/users/change/${id}`);
+    navigate(`${githubPages}/users/change/${id}`)
   }
   return (
     <div className="employe__item" key={user.id}>
@@ -30,13 +31,13 @@ function EmployeItem({ user }: { user: IUser }) {
         </button>
         <button
           className="svgBtn"
-          onClick={() => navigate(`/users/view/${user.id}`)}
+          onClick={() => navigate(`${githubPages}/users/view/${user.id}`)}
         >
           <Show />
         </button>
       </div>
     </div>
-  );
+  )
 }
 
-export default EmployeItem;
+export default EmployeItem

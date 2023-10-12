@@ -1,30 +1,31 @@
-import React, { useState } from "react";
-import "./changeUser.css";
-import { IUser } from "../../api/interface";
-import { Navigate, Route, useParams } from "react-router";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
-import { useDispatch } from "react-redux";
-import { deleteUser, updateUser } from "../../store/reducers/conunterSlice";
-import { useNavigate } from "react-router-dom";
-import Switch from "../../assets/switch";
-import Modal from "../../components/modalWindow";
+import React, { useState } from 'react'
+import './changeUser.css'
+import { IUser } from '../../api/interface'
+import { Navigate, Route, useParams } from 'react-router'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../store/store'
+import { useDispatch } from 'react-redux'
+import { deleteUser, updateUser } from '../../store/reducers/conunterSlice'
+import { useNavigate } from 'react-router-dom'
+import Switch from '../../assets/switch'
+import Modal from '../../components/modalWindow'
+import { githubPages } from '../../App'
 
 function ViewUser() {
-  const users = useSelector((state: RootState) => state.store.users);
-  const dispatch = useDispatch();
+  const users = useSelector((state: RootState) => state.store.users)
+  const dispatch = useDispatch()
 
-  const { user } = useParams<{ user: string }>();
-  const navigate = useNavigate();
+  const { user } = useParams<{ user: string }>()
+  const navigate = useNavigate()
 
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false)
 
-  const selectedUser = user ? users?.find((item) => item.id === +user) : null;
-  const [name, setName] = useState(selectedUser?.name || "");
-  const [email, setEmail] = useState(selectedUser?.email || "");
-  const [company, setCompany] = useState(selectedUser?.company.name || "");
-  const [phone, setPhone] = useState(selectedUser?.phone || "");
-  const [password, setPassword] = useState(selectedUser?.password || "");
+  const selectedUser = user ? users?.find((item) => item.id === +user) : null
+  const [name, setName] = useState(selectedUser?.name || '')
+  const [email, setEmail] = useState(selectedUser?.email || '')
+  const [company, setCompany] = useState(selectedUser?.company.name || '')
+  const [phone, setPhone] = useState(selectedUser?.phone || '')
+  const [password, setPassword] = useState(selectedUser?.password || '')
 
   const handleSave = () => {
     if (selectedUser) {
@@ -37,24 +38,27 @@ function ViewUser() {
           ...selectedUser.company,
           name: company,
         },
-      };
-      dispatch(updateUser(updatedUser));
+      }
+      dispatch(updateUser(updatedUser))
     }
-  };
+  }
   const deleteUserCb = (id: string) => {
-    setModalOpen(false);
-    dispatch(deleteUser(id));
-    navigate("/users");
-  };
+    setModalOpen(false)
+    dispatch(deleteUser(id))
+    navigate(`${githubPages}/users`)
+  }
 
   const handleClick = () => {
-    setModalOpen(true);
-  };
+    setModalOpen(true)
+  }
 
   return (
     <>
       <div className="nav">
-        <span className="nav-item" onClick={() => navigate("/users")}>
+        <span
+          className="nav-item"
+          onClick={() => navigate(`${githubPages}/users`)}
+        >
           Сотрудник/
         </span>
         <span>сотрудник {selectedUser?.name}</span>
@@ -75,13 +79,16 @@ function ViewUser() {
           ) : (
             <p>No user selected</p>
           )}
-          <button className="Btn" onClick={() => navigate("/users")}>
+          <button
+            className="Btn"
+            onClick={() => navigate(`${githubPages}/users`)}
+          >
             Назад
           </button>
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default ViewUser;
+export default ViewUser
