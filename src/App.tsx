@@ -21,15 +21,18 @@ function App() {
       <div className="App__wrapper">
         <Routes>
           <Route path="/" element={<Navigate to={`${githubPages}/posts`} />} />
-          <Route path={`${githubPages}`} element={<Navigate to={`${githubPages}/posts`} />}/>
-          <Route path={`${githubPages}/users`} element={<TableEmploye />} />
-          <Route path={`${githubPages}/posts`} element={<TablePosts />} />
-          <Route path={`${githubPages}/posts/change/:post`} element={<ChangePost />} />
-          <Route path={`${githubPages}/users/change/:user`} element={<ChangeUser />}/>
-          <Route path={`${githubPages}/users/сreation`} element={<NewEmploye />}/>
-          <Route path={`${githubPages}/posts/сreation`} element={<NewPost />} />
-          <Route path={`${githubPages}/users/view/:user`} element={<ViewUser />}/>
-          <Route path={`${githubPages}/post/view/:post`} element={<ViewPost />}/>
+          <Route
+            path={`${githubPages}`}
+            element={<Navigate to={`${githubPages}/posts`} />}
+          />
+          <Route path={`/users`} element={<TableEmploye />} />
+          <Route path={`/posts`} element={<TablePosts />} />
+          <Route path={`/posts/change/:post`} element={<ChangePost />} />
+          <Route path={`/users/change/:user`} element={<ChangeUser />} />
+          <Route path={`/users/сreation`} element={<NewEmploye />} />
+          <Route path={`/posts/сreation`} element={<NewPost />} />
+          <Route path={`/users/view/:user`} element={<ViewUser />} />
+          <Route path={`/post/view/:post`} element={<ViewPost />} />
         </Routes>
       </div>
     </div>
