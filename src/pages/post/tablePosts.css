@@ -1,0 +1,13 @@
+.posts__item.header {
+
+    margin: 0;
+    padding: 14px;
+    background: #D6EAFF;
+    display: grid;
+    grid-template-columns: 6fr 6fr;
+    justify-items: start;
+    align-items: center;
+
+}
+
+.title {}

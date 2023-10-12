@@ -1,0 +1,30 @@
+.post__title,
+.post__body_wrapper {
+
+    display: inline-block;
+    max-width: 350px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.post__body {
+    display: flex;
+    justify-content: space-between;
+}
+
+.post__body_wrapper:first-child {
+    margin-right: auto;
+}
+
+.post__item {
+    display: grid;
+    grid-template-columns: 5fr 5fr auto auto;
+    align-items: center;
+    justify-items: stretch;
+    align-items: stretch;
+    padding: 14px 16px 14px 16px;
+    border-top: 1px solid #DFE3E6;
+    margin: 0;
+    padding: 16px;
+}
