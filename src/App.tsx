@@ -19,6 +19,10 @@ function App() {
       <div className="App__wrapper">
         <Routes>
           <Route path="/" element={<Navigate to="/posts" />} />
+          <Route
+            path="/user-list-post-list/"
+            element={<Navigate to="/posts" />}
+          />
           <Route path="/users" element={<TableEmploye />} />
           <Route path="/posts" element={<TablePosts />} />
           <Route path="/posts/change/:post" element={<ChangePost />} />
