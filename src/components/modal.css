@@ -11,6 +11,7 @@
 }
 
 .modal-content {
+    min-width: 350px;
     background: white;
     padding: 20px;
     border-radius: 5px;
@@ -40,23 +41,31 @@ button {
     line-height: 20px;
 }
 
-.Btn {
+.Btn.modal {
+    margin: 0;
     width: 140px;
     height: 48px;
-    margin-right: 24px;
-    margin-top: 24px;
     padding: 15px 44px;
     justify-content: center;
     align-items: center;
-    gap: 3px;
     border: none;
     background-color: #FFF;
-    color: #4054B2;
     border: 1px solid #4054B2;
 }
+
+
 
 .Btn.active {
     background-color: #4054B2;
     color: #FFF;
     border-radius: 2px;
+}
+
+.btn-wrapper {
+    display: flex;
+    margin-top: 24px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
 }

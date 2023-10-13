@@ -27,12 +27,14 @@ const Modal: React.FC<ModalProps> = ({
       <div className="modal-content">
         <h1 className="modal-title">{messageText}</h1>
         <h2 className="modal-warning">Это действие нельзя будет отменить.</h2>
-        <button className="Btn" onClick={onClose}>
-          Отмена
-        </button>
-        <button className="Btn active" onClick={onDelete}>
-          Удалить
-        </button>
+        <div className="btn-wrapper">
+          <button className="Btn modal" onClick={onClose}>
+            Отмена
+          </button>
+          <button className="Btn modal active" onClick={onDelete}>
+            Удалить
+          </button>
+        </div>
       </div>
     </div>,
     modalRoot
