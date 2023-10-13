@@ -22,26 +22,6 @@ function ViewPost() {
   const [title, setTitle] = useState(selectedPost?.title || '')
   const [body, setBody] = useState(selectedPost?.body || '')
 
-  const handleSave = () => {
-    if (selectedPost) {
-      const updatedpost: IPost = {
-        ...selectedPost,
-        title: title,
-        body: body,
-      }
-      dispatch(updatePost(updatedpost))
-    }
-  }
-  const deletePostCb = (id: string) => {
-    setModalOpen(false)
-    dispatch(deletePost(id))
-    navigate(`${githubPages}/posts`)
-  }
-
-  const handleClick = () => {
-    setModalOpen(true)
-  }
-
   return (
     <>
       <div className="nav">

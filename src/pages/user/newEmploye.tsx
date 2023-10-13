@@ -5,13 +5,8 @@ import { Navigate, Route, useParams } from 'react-router'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../store/store'
 import { useDispatch } from 'react-redux'
-import {
-  addUser,
-  deleteUser,
-  updateUser,
-} from '../../store/reducers/conunterSlice'
+import { addUser } from '../../store/reducers/conunterSlice'
 import { useNavigate } from 'react-router-dom'
-import Switch from '../../assets/switch'
 import { githubPages } from '../../App'
 
 function NewEmploye() {

@@ -4,13 +4,11 @@ import { IUser } from '../../api/interface'
 import Pencil from '../../assets/pencil'
 import Show from '../../assets/show'
 import { Navigate, Route, useNavigate } from 'react-router'
-import TableEmploye from './tableEmploye.'
-import ChangeUser from './changeUses'
 import { githubPages } from '../../App'
 
 function EmployeItem({ user }: { user: IUser }) {
   const navigate = useNavigate()
-  function changeUser(id: number) {
+  const changeUser = (id: number) => {
     navigate(`${githubPages}/users/change/${id}`)
   }
   return (

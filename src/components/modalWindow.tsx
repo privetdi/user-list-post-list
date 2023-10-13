@@ -1,13 +1,13 @@
-import React, { ReactNode } from "react";
-import ReactDOM from "react-dom";
+import React, { ReactNode } from 'react'
+import ReactDOM from 'react-dom'
 
-import "./modal.css";
+import './modal.css'
 
 interface ModalProps {
-  messageText: string;
-  open: boolean;
-  onClose: () => void;
-  onDelete: () => void; // Типизируем функцию delete
+  messageText: string
+  open: boolean
+  onClose: () => void
+  onDelete: () => void
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -16,11 +16,11 @@ const Modal: React.FC<ModalProps> = ({
   onClose,
   onDelete,
 }) => {
-  if (!open) return null;
+  if (!open) return null
 
-  const modalRoot = document.getElementById("modal-root"); // ID DOM-элемента для вставки модального окна
+  const modalRoot = document.getElementById('modal-root')
 
-  if (!modalRoot) return null;
+  if (!modalRoot) return null
 
   return ReactDOM.createPortal(
     <div className="modal-overlay">
@@ -36,7 +36,7 @@ const Modal: React.FC<ModalProps> = ({
       </div>
     </div>,
     modalRoot
-  );
-};
+  )
+}
 
-export default Modal;
+export default Modal

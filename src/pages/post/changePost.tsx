@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './changePost.css'
 import { IPost } from '../../api/interface'
-import { Navigate, Route, useParams } from 'react-router'
+import { useParams } from 'react-router'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../store/store'
 import { useDispatch } from 'react-redux'

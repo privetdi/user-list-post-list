@@ -1,14 +1,10 @@
 import React, { useState } from 'react'
 import './changeUser.css'
-import { IUser } from '../../api/interface'
 import { Navigate, Route, useParams } from 'react-router'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../store/store'
 import { useDispatch } from 'react-redux'
-import { deleteUser, updateUser } from '../../store/reducers/conunterSlice'
 import { useNavigate } from 'react-router-dom'
-import Switch from '../../assets/switch'
-import Modal from '../../components/modalWindow'
 import { githubPages } from '../../App'
 
 function ViewUser() {
@@ -26,31 +22,6 @@ function ViewUser() {
   const [company, setCompany] = useState(selectedUser?.company.name || '')
   const [phone, setPhone] = useState(selectedUser?.phone || '')
   const [password, setPassword] = useState(selectedUser?.password || '')
-
-  const handleSave = () => {
-    if (selectedUser) {
-      const updatedUser: IUser = {
-        ...selectedUser,
-        name: name,
-        email: email,
-        phone: phone,
-        company: {
-          ...selectedUser.company,
-          name: company,
-        },
-      }
-      dispatch(updateUser(updatedUser))
-    }
-  }
-  const deleteUserCb = (id: string) => {
-    setModalOpen(false)
-    dispatch(deleteUser(id))
-    navigate(`${githubPages}/users`)
-  }
-
-  const handleClick = () => {
-    setModalOpen(true)
-  }
 
   return (
     <>

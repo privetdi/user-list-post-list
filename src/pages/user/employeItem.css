@@ -45,7 +45,6 @@ span.email {
 .employe__item>* {
     padding: 14px 16px 14px 16px;
     border-top: 1px solid #DFE3E6;
-    /* Устанавливаем стиль border для всех прямых дочерних элементов */
 }
 
 .employe__item.header {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { IPost, IUser } from '../../api/interface'
+import { IPost } from '../../api/interface'
 import Pencil from '../../assets/pencil'
 import Show from '../../assets/show'
 import { Navigate, Route, useNavigate } from 'react-router'
@@ -8,9 +8,10 @@ import { githubPages } from '../../App'
 
 function PostItem({ post }: { post: IPost }) {
   const navigate = useNavigate()
-  function changePost(id: number) {
+  const changePost = (id: number) => {
     navigate(`${githubPages}/posts/change/${id}`)
   }
+
   return (
     <div className="post__item" key={post.id}>
       <span className="post__title">{post.title}</span>

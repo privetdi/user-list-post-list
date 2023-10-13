@@ -1,10 +1,6 @@
 import React, { useEffect } from 'react'
-import { IPost } from '../../api/interface'
-import { api } from '../../api/api'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../store/store'
-import { useDispatch } from 'react-redux'
-import { setListPosts } from '../../store/reducers/conunterSlice'
 import PostItem from './postItem'
 import './tablePosts.css'
 import { Navigate, useNavigate } from 'react-router'
@@ -13,9 +9,10 @@ import { githubPages } from '../../App'
 function TablePosts() {
   const posts = useSelector((state: RootState) => state.store.posts)
   const navigate = useNavigate()
-  function newPost() {
+  const newPost = () => {
     navigate(`${githubPages}/posts/сreation`)
   }
+
   return (
     <div>
       <h1 className="title">Посты</h1>

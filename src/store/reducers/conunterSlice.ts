@@ -20,7 +20,8 @@ export const store = createSlice({
             state.posts = actions.payload.posts
         },
         updateUser: (state, actions) => {
-            state.users = actions.payload.users
+            const filteredArray: IUser[] | null = state.users ? state.users?.filter((item) => item.id !== +actions.payload.id) : null;
+            state.users = filteredArray ? [...filteredArray, actions.payload] : [state.users]
         },
         deleteUser: (state, actions) => {
             const filteredArray: IUser[] | null = state.users ? state.users?.filter((item) => item.id !== +actions.payload) : null;
@@ -31,7 +32,8 @@ export const store = createSlice({
                 state.users = [...state.users, actions.payload]
         },
         updatePost: (state, actions) => {
-            state.posts = actions.payload.post
+            const filteredArray: IPost[] | null = state.posts ? state.posts?.filter((item) => item.id !== +actions.payload.id) : null;
+            state.posts = filteredArray ? [...filteredArray, actions.payload] : [state.posts]
         },
         deletePost: (state, actions) => {
             const filteredArray: IPost[] | null = state.posts ? state.posts?.filter((item) => item.id !== +actions.payload) : null;
