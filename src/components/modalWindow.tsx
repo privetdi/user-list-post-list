@@ -22,8 +22,15 @@ const Modal: React.FC<ModalProps> = ({
 
   if (!modalRoot) return null
 
+  const closeModal = (e: React.MouseEvent<HTMLDivElement>) => {
+    const target = e.target as HTMLDivElement
+    if (target.classList.contains('modal-overlay')) {
+      onClose()
+    }
+  }
+
   return ReactDOM.createPortal(
-    <div className="modal-overlay">
+    <div className="modal-overlay" onClick={closeModal}>
       <div className="modal-content">
         <h1 className="modal-title">{messageText}</h1>
         <h2 className="modal-warning">Это действие нельзя будет отменить.</h2>
