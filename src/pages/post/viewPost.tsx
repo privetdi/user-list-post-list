@@ -29,7 +29,7 @@ function ViewPost() {
           className="nav-item"
           onClick={() => navigate(`${githubPages}/posts`)}
         >
-          Сотрудник/
+          посты/
         </span>
         <span>post</span>
       </div>

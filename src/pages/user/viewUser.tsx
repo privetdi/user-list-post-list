@@ -30,7 +30,7 @@ function ViewUser() {
           className="nav-item"
           onClick={() => navigate(`${githubPages}/users`)}
         >
-          Сотрудник/
+          Сотрудники/
         </span>
         <span>сотрудник {selectedUser?.name}</span>
       </div>

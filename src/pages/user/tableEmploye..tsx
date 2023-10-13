@@ -6,6 +6,8 @@ import './tableEmploye.css'
 import Search from '../../assets/search'
 import { useNavigate } from 'react-router'
 import { githubPages } from '../../App'
+import UpDown from '../../assets/upDown'
+import Filter from '../../assets/filter'
 
 function TableEmploye() {
   const users = useSelector((state: RootState) => state.store.users)
@@ -33,9 +35,15 @@ function TableEmploye() {
       <div className="employe__item header">
         <div className="name">
           <span>ФИО</span>
+          <div className="svgHeader">
+            <UpDown />
+          </div>
         </div>
         <div className="company">
           <span>Компания</span>
+          <div className="svgHeader">
+            <Filter />
+          </div>
         </div>
         <div className="phone">
           <span>Номер телефона</span>

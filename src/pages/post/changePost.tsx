@@ -55,7 +55,7 @@ function ChangePost() {
         </span>
         <span>Изменение поста</span>
       </div>
-      <h2 className="titleChangepost">Изменить сотрудника</h2>
+      <h2 className="titleChangepost">Изменить поста</h2>
       <div className="wrapper">
         <div>
           {selectedPost ? (
