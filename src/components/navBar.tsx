@@ -11,7 +11,7 @@ function NavBar() {
 
   const fetchDataUsers = async () => {
     try {
-      const response: IUser[] = await api<IUser[], Body>(
+      const response: IUser[] = await api<IUser[]>(
         'https://jsonplaceholder.typicode.com/users',
         { method: 'GET' }
       )
@@ -22,7 +22,7 @@ function NavBar() {
   }
   const fetchDataPosts = async () => {
     try {
-      const response: IPost[] = await api<IPost[], Body>(
+      const response: IPost[] = await api<IPost[]>(
         'https://jsonplaceholder.typicode.com/posts',
         { method: 'GET' }
       )

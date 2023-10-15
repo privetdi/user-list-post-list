@@ -2,11 +2,6 @@ interface BodyConfig {
     method: string
 }
 
-export interface Body {
-    chatId: string
-    count?: number
-    message?: string
-}
 
 export const api = async <TResponse, TParams = undefined>(
     url: string,
